@@ -10,8 +10,10 @@
 <body>
   <header><div><h1>TOY MOTION ORCHESTRA</h1><p>Motion → Rhythm → Music</p></div><div class="top-actions"><button id="cameraStart">CAMERA START</button><button id="cameraStop">CAMERA STOP</button><button id="cameraSwitch">CAMERA SWITCH</button><button id="audioStart">AUDIO START</button><button id="fullscreen">FULLSCREEN</button><button id="hideUi">HIDE UI</button></div></header>
   <main>
-    <section class="stage"><div class="canvas-wrap"><video id="video" playsinline muted></video><canvas id="view"></canvas><canvas id="analysis" hidden></canvas><div id="hitFlash"></div><div class="flow">TOY MOTION <span>↓</span> NEW SOUND</div></div><p class="privacy">Camera processing is performed locally in your browser.</p></section>
+    <section class="stage"><div class="canvas-wrap"><video id="video" playsinline muted></video><canvas id="view"></canvas><canvas id="analysis" hidden></canvas><div id="hitFlash"></div><div class="flow">TOY MOTION <span>↓</span> NEW SOUND</div></div><p class="privacy">Camera processing is performed locally. Video is sent peer-to-peer and is not recorded or uploaded unless recording is explicitly enabled.</p></section>
     <aside id="controls">
+      <section class="camera-source"><h2>CAMERA SOURCE</h2><div class="source-tabs"><button id="sourceLocal" class="active">THIS DEVICE</button><button id="sourceRemote">REMOTE PHONE</button></div><p id="sourceState" class="source-state local">THIS DEVICE</p></section>
+      <section id="phoneConnect" class="phone-connect" hidden><h2>CONNECT PHONE CAMERA</h2><div id="qrCode" aria-label="Phone camera connection QR code"></div><p class="scan-copy">Scan this QR code with your phone</p><a id="phoneUrl" target="_blank" rel="noopener"></a><p id="phoneStatus" class="connection-status">PHONE CAMERA · WAITING…</p><div class="buttons"><button id="reconnectPhone">RECONNECT QR</button><button id="switchPhone">SWITCH PHONE CAMERA</button></div></section>
       <section><h2>PLAYBACK</h2><div class="buttons"><button id="demo">DEMO MODE</button><button id="debug">DEBUG OFF</button><button id="mask">DEBUG MASK</button><button id="markers">MARKERS ON</button><button id="trails">TRAIL ON</button><button id="graph">GRAPH ON</button></div></section>
       <section class="color-system"><h2>COLOR TARGETS</h2><p class="hint">Choose any color, or select EYEDROPPER then click / tap the object in the camera.</p><div id="targetList"></div><button id="addTarget">+ ADD TARGET</button></section>
       <section><h2>MASK PREVIEW</h2><label>Mask view <select id="maskView"><option value="all">ALL</option></select></label><label class="check"><input id="overlay" type="checkbox" checked> COLOR OVERLAY</label></section>
@@ -24,6 +26,9 @@
   </main>
   <section id="readouts"><div><b>BPM</b><strong id="bpm">—</strong><small>L <span id="lbpm">—</span> · R <span id="rbpm">—</span></small></div><div><b>RELATIVE PHASE</b><strong id="phase">—°</strong><small>COORDINATION <span id="coord">—%</span></small></div><div><b>TRACKING CONFIDENCE</b><small id="confidenceReadout">—</small></div><div><b>CAMERA / FPS</b><small id="cameraInfo">Demo / — fps</small></div></section>
   <canvas id="chart" height="130"></canvas>
+  <script src="https://unpkg.com/peerjs@1.5.5/dist/peerjs.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="remote-host.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
