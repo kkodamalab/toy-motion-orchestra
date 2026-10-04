@@ -17,6 +17,8 @@ An in-browser **Color → Motion → Sound** instrument. It tracks independently
 4. The phone sends its `MediaStream` to the host over WebRTC. The received stream is assigned to the same video element used by local capture, so eyedropper sampling, masks, blob tracking, hit detection, BPM, phase, coordination, recording, and sound use the unchanged analysis pipeline.
 5. Switch between rear/front cameras on the phone, or use **SWITCH PHONE CAMERA** on the host. If the phone disconnects, tracking pauses and the host does not silently fall back to its own camera.
 
+**VIDEO FIT** defaults to **CONTAIN**, preserving the camera's native aspect ratio with black letterbox or pillarbox space when needed. **COVER** fills the stage by cropping overflow, never by stretching. Both local and remote cameras use the same aspect-aware video, mask, marker, trail, bounding-box, and eyedropper coordinate transforms. Portrait streams are analyzed at 180×320, standard landscape streams at 320×180, and unusual aspect ratios retain their source ratio. The layout is recalculated from `videoWidth` and `videoHeight`, including after phone rotation.
+
 The phone link contains a temporary PeerJS host ID. The public, API-key-free PeerJS cloud broker performs signaling; QR alone cannot negotiate WebRTC. Camera media is sent peer-to-peer and is not uploaded to the signaling service. This keeps the project deployable as static GitHub Pages files, but initial connection requires internet access to the signaling broker. No paid account or project API key is required. Network policies or symmetric NAT may prevent a direct connection because this app deliberately does not configure a paid TURN relay.
 
 ## Color targets
