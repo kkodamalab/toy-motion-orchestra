@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#080a0d">
+  <title>Remote Camera — Toy Motion Orchestra</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="phone.css">
+</head>
+<body class="phone-page">
+  <main class="phone-shell">
+    <header><div><h1>TOY MOTION ORCHESTRA</h1><p>REMOTE CAMERA</p></div></header>
+    <section class="phone-preview"><video id="phoneVideo" playsinline muted autoplay></video><div id="phoneBadge">DISCONNECTED</div></section>
+    <section class="phone-controls">
+      <button id="phoneStart" class="primary">START CAMERA</button>
+      <div class="source-tabs"><button id="rearCamera" class="active">REAR</button><button id="frontCamera">FRONT</button></div>
+      <button id="torch" hidden>TORCH OFF</button>
+      <p>STATUS: <strong id="phoneState">READY</strong></p>
+    </section>
+    <p class="privacy">Camera processing is performed locally. Video is sent peer-to-peer and is not recorded or uploaded unless recording is explicitly enabled.</p>
+  </main>
+  <script src="https://unpkg.com/peerjs@1.5.5/dist/peerjs.min.js"></script>
+  <script src="phone.js"></script>
+</body>
+</html>
